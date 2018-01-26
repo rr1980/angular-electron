@@ -1,0 +1,8 @@
+﻿
+<div class="{{class}}">
+    <div class="col-md-12">
+        <ul *ngIf="shouldShowErrors()" class="validation-errors col-md-12">
+            <li *ngFor="let err of listOfErrors();" style="color: red">{{err}}</li>
+        </ul>
+    </div>
+</div>

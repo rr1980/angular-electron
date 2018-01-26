@@ -1,0 +1,12 @@
+﻿
+<div class="{{class}}">
+    <label class="control-label col-md-12">
+        {{label}}<i *ngIf="showAsterik" class="glyphicon glyphicon-asterisk asterik-label"></i>
+        <input [(ngModel)]="value"
+               [disabled]="disabled"
+               type="{{type}}"
+               class="form-control col-md-12"
+               (blur)="onBlur()" autocomplete='off'>
+    </label>
+    <show-errors [class]="'col-md-12'" [control]="control" [showOnStartrError]="showOnStartrError" [fieldName]="label"></show-errors>
+</div>
