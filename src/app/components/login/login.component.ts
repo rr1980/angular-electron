@@ -2,6 +2,7 @@ import { Component, OnInit, forwardRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import * as _ from "lodash";
+import { AuthService } from "AuthService";
 
 @Component({
   selector: "app-login",
@@ -13,12 +14,16 @@ export class LoginComponent implements OnInit {
   errorMsg: string;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      username: ["", [Validators.required]],
-      password: ["", [Validators.required]]
+      username: ["admin", [Validators.required]],
+      password: ["admin", [Validators.required]]
     });
   }
 
@@ -28,9 +33,15 @@ export class LoginComponent implements OnInit {
     });
 
     if (!this.form.invalid) {
-      console.log("JO");
-    } else {
-      console.log("NO");
+      this.authService.login(this.form.value).subscribe(
+        () => {
+          this.errorMsg = undefined;
+          this.router.navigate(["/home"]);
+        },
+        err => {
+          this.errorMsg = err as string;
+        }
+      );
     }
   }
 }

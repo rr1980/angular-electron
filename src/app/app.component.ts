@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from './providers/electron.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,12 @@ import { ElectronService } from './providers/electron.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public electronService: ElectronService) {
+  constructor(public electronService: ElectronService, private router: Router) {
 
+  //   router.events.subscribe((val) => {
+  //     // see also 
+  //     console.log(val) ;
+  // });
 
     if (electronService.isElectron()) {
       console.log('Mode electron');

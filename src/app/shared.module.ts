@@ -11,7 +11,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    // MatMenuModule,
+    MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     // MatCardModule
@@ -20,6 +20,7 @@ import {
 
 // services
 import { AuthGuard } from 'AuthGuard';
+import { AuthService } from 'AuthService';
 import { ElectronService } from './providers/electron.service';
 import { ShowErrorsComponent } from 'app/components/shared/show-errors/show-errors.component';
 import { LabeledInputComponent } from 'app/components/shared/labeled-input/labeled-input.component';
@@ -44,7 +45,7 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         MatButtonModule,
         MatInputModule,
         MatCardModule,
-        // MatMenuModule,
+        MatMenuModule,
         MatToolbarModule,
         MatIconModule,
         // MatCardModule
@@ -64,7 +65,7 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         MatButtonModule,
         MatInputModule,
         MatCardModule,
-        // MatMenuModule,
+        MatMenuModule,
         MatToolbarModule,
         MatIconModule,
         // MatCardModule
@@ -77,7 +78,8 @@ export class SharedModule {
             ngModule: SharedModule,
             providers: [
                 AuthGuard,
-                ElectronService
+                ElectronService,
+                AuthService
             ]
         };
     }

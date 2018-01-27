@@ -15,7 +15,8 @@
       "environments": [
         "./environments"
       ],
-      "AuthGuard": [ "./app/guards/auth.guard.ts" ]
+      "AuthGuard": [ "./app/guards/auth.guard.ts" ],
+      "AuthService": [ "./app/providers/auth.service.ts" ]
     },
     "types": [
       "node",

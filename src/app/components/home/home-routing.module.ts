@@ -2,9 +2,18 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { HomeComponent } from "../home/home.component";
+import { NavbarComponent } from '../navbar/navbar.component';
+import { AccountComponent } from './account/account.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { 
+    path: "", component: HomeComponent ,
+    children:[
+      {
+        path: "account", component: AccountComponent 
+      }
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -14,4 +23,4 @@ const routes: Routes = [
 })
 export class HomeRoutingModule {}
 
-export const routedComponents = [HomeComponent];
+export const routedComponents = [NavbarComponent, HomeComponent, AccountComponent];

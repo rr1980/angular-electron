@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>Application Title</span>
+  <button mat-raised-button [routerLinkActive]="['active']" [routerLink]="['/home']">
+    <mat-icon>account_circle</mat-icon> Home
+  </button>
+  <span class="fill-remaining-space"></span>
+  <!--  Mitte -->
+  <!-- <a mat-raised-button [routerLinkActive]="['active']" [routerLink]="['/home/account']">
+    <mat-icon>account_circle</mat-icon> Account
+  </a> -->
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon> Account
+  </button>
+  <mat-menu #menu="matMenu" [matMenuTriggerFor]="menu" yPosition="above" overlapTrigger="false">
+      <button mat-menu-item  [routerLink]="['account']">
+        <mat-icon>account_circle</mat-icon> Account
+      </button>
+      <button mat-menu-item (click)="onClickLogout()">
+        <mat-icon>settings_power</mat-icon> Logout
+      </button>
+    </mat-menu>
+</mat-toolbar>

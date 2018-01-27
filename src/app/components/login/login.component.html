@@ -1,23 +1,26 @@
 <div class="container-fluid">
   <div class="row justify-content-md-center" style="margin-top:200px;">
     <mat-card>
-      <mat-toolbar color="accent">Login</mat-toolbar>
+      <mat-toolbar color="accent">login</mat-toolbar>
       <mat-card-content>
         <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete='off'>
           <mat-form-field class="col-md-12">
-            <input formControlName="username" matInput placeholder="Enter your username" [type]="'text'">
+            <input formControlName="username" matInput placeholder="enter your username" [type]="'text'">
             <mat-error *ngIf="form.controls.username.invalid">
               username required
             </mat-error>
           </mat-form-field>
           <mat-form-field class="col-md-12">
-            <input formControlName="password" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <input formControlName="password" matInput placeholder="enter your password" [type]="hide ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
             <mat-error *ngIf="form.controls.password.invalid">
               password required
             </mat-error>
           </mat-form-field>
-          <button type="submit" mat-raised-button color="primary" class="col-md-12" mat-button>Anmelden</button>
+          <mat-error class="col-md-12 text-center">
+            {{errorMsg}}
+          </mat-error>
+          <button type="submit" mat-raised-button color="primary" class="col-md-12" mat-button>send</button>
         </form>
       </mat-card-content>
     </mat-card>

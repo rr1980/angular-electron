@@ -17,11 +17,17 @@ function createWindow() {
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
+  // win = new BrowserWindow({
+  //   x: 0,
+  //   y: 0,
+  //   width: size.width,
+  //   height: size.height
+  // });
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height
+    x: 200,
+    y: 200,
+    width: 1400,
+    height: 800
   });
 
   // and load the index.html of the app.
