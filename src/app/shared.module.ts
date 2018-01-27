@@ -48,11 +48,12 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         MatMenuModule,
         MatToolbarModule,
         MatIconModule,
+
         // MatCardModule
     ],
     declarations: [
         LabeledInputComponent,
-        ShowErrorsComponent
+        ShowErrorsComponent,
     ],
     exports: [
         CommonModule,
