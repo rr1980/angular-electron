@@ -5,8 +5,22 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// material
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    // MatCardModule
+  } from '@angular/material';
+
+
 // services
 import { AuthGuard } from 'AuthGuard';
+import { AuthService } from 'AuthService';
 import { ElectronService } from './providers/electron.service';
 import { ShowErrorsComponent } from 'app/components/shared/show-errors/show-errors.component';
 import { LabeledInputComponent } from 'app/components/shared/labeled-input/labeled-input.component';
@@ -27,10 +41,19 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatIconModule,
+
+        // MatCardModule
     ],
     declarations: [
         LabeledInputComponent,
-        ShowErrorsComponent
+        ShowErrorsComponent,
     ],
     exports: [
         CommonModule,
@@ -38,7 +61,15 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         ReactiveFormsModule,
         HttpClientModule,
         LabeledInputComponent,
-        ShowErrorsComponent
+        ShowErrorsComponent,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatIconModule,
+        // MatCardModule
     ]
 })
 
@@ -48,7 +79,8 @@ export class SharedModule {
             ngModule: SharedModule,
             providers: [
                 AuthGuard,
-                ElectronService
+                ElectronService,
+                AuthService
             ]
         };
     }

@@ -5,15 +5,16 @@ import {
   ActivatedRouteSnapshot,
   Route
 } from "@angular/router";
+import { AuthService } from "AuthService";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   check: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   canActivate(route: ActivatedRouteSnapshot) {
-    if (!this.check) {
+    if (!this.authService.isLoggedIn) {
       this.router.navigate(["/login"]);
     }
 

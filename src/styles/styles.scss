@@ -1,6 +1,11 @@
 
 @import "variables";
 @import "node_modules/bootstrap/scss/bootstrap";
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+
 @import "custom";
 
 
@@ -9,4 +14,11 @@ html, body {
   padding: 0;
  
   height: 100%;
+  font-family: Roboto, sans-serif;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
 }

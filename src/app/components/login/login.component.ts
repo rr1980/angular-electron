@@ -1,38 +1,54 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit, forwardRef, OnDestroy } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import * as _ from "lodash";
+import { AuthService } from "AuthService";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   public form: FormGroup;
-  errMsg: string;
-  
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  errorMsg: string;
+  hide = true;
+  sub:Subscription;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      username: ["Admin", [Validators.required]],
+      username: ["admin", [Validators.required]],
       password: ["admin", [Validators.required]]
-  });
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   onSubmit() {
-
-    _.each(this.form.controls, (control) => {
-        control.markAsTouched();
+    _.each(this.form.controls, control => {
+      control.markAsTouched();
     });
 
     if (!this.form.invalid) {
-        console.log("JO");
+      this.sub = this.authService.login(this.form.value).subscribe(
+        () => {
+          this.errorMsg = undefined;
+          this.router.navigate(["/home"]);
+        },
+        err => {
+          this.errorMsg = err as string;
+        }
+      );
     }
-    else{
-      console.log("NO");
-    }
-}
+  }
 }
