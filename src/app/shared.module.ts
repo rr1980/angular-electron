@@ -5,6 +5,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// material
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    // MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    // MatCardModule
+  } from '@angular/material';
+
+
 // services
 import { AuthGuard } from 'AuthGuard';
 import { ElectronService } from './providers/electron.service';
@@ -27,6 +40,14 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        // MatMenuModule,
+        MatToolbarModule,
+        MatIconModule,
+        // MatCardModule
     ],
     declarations: [
         LabeledInputComponent,
@@ -38,7 +59,15 @@ import { LabeledInputComponent } from 'app/components/shared/labeled-input/label
         ReactiveFormsModule,
         HttpClientModule,
         LabeledInputComponent,
-        ShowErrorsComponent
+        ShowErrorsComponent,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        // MatMenuModule,
+        MatToolbarModule,
+        MatIconModule,
+        // MatCardModule
     ]
 })
 

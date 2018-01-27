@@ -1,31 +1,25 @@
 <div class="container-fluid">
-  <div class="row justify-content-md-center" style="padding-top:200px;">
-    <div class="col-md-4">
-
-      <div class="card">
-        <div class="card-header bg-primary">Anmelden</div>
-        <div class="card-block">
-          <div class="row mt-3">
-            <div class="col-md-12">
-              <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete='off'>
-                <div class="form-group">
-                  <labeled-input formControlName="username" [control]="form.controls.username" [label]="'Benutzer'"></labeled-input>
-                  <labeled-input formControlName="password" [control]="form.controls.password" [label]="'Passwort'" [type]="'password'"></labeled-input>
-                  <div class="col-md-12">
-                    <ul *ngIf="errMsg" class="validation-errors">
-                      <li style="color: red">
-                        <strong>{{errMsg}}</strong>
-                      </li>
-                    </ul>
-                    <button type="submit" style="margin-top: 10px" class="form-control btn btn-primary">Anmelden</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="row justify-content-md-center" style="margin-top:200px;">
+    <mat-card>
+      <mat-toolbar color="accent">Login</mat-toolbar>
+      <mat-card-content>
+        <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete='off'>
+          <mat-form-field class="col-md-12">
+            <input formControlName="username" matInput placeholder="Enter your username" [type]="'text'">
+            <mat-error *ngIf="form.controls.username.invalid">
+              username required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-12">
+            <input formControlName="password" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="form.controls.password.invalid">
+              password required
+            </mat-error>
+          </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" class="col-md-12" mat-button>Anmelden</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
-
 </div>
